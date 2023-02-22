@@ -103,12 +103,12 @@ enum {
   SchemeTag3,
   SchemeTag4,
   SchemeTag5,
-  SchemeLayout,
+ // SchemeLayout,
   TabSel,
   TabNorm,
-  SchemeBtnPrev,
-  SchemeBtnNext,
-  SchemeBtnClose
+  // SchemeBtnPrev,
+  // SchemeBtnNext,
+  // SchemeBtnClose
 }; /* color schemes */
 enum {
   NetSupported,
@@ -1519,7 +1519,7 @@ void drawbar(Monitor *m) {
     x += w;
   }
   w = TEXTW(m->ltsymbol);
-  drw_setscheme(drw, scheme[SchemeLayout]);
+ // drw_setscheme(drw, scheme[SchemeLayout]);
   x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
 
   	for (i = 0; i < LENGTH(launchers); i++)
@@ -1698,17 +1698,17 @@ drawtab(Monitor *m) {
 
        	w = mw - buttons_w - x;
 	x += w;
-	drw_setscheme(drw, scheme[SchemeBtnPrev]);
+//	drw_setscheme(drw, scheme[SchemeBtnPrev]);
 	w = TEXTW(btn_prev) - lrpad + horizpadtabo;
 	m->tab_btn_w[0] = w;
 	drw_text(drw, x + horizpadtabo / 2, vertpadbar / 2, w, th - vertpadbar, 0, btn_prev, 0);
 	x += w;
-        drw_setscheme(drw, scheme[SchemeBtnNext]);
+       // drw_setscheme(drw, scheme[SchemeBtnNext]);
 	w = TEXTW(btn_next) - lrpad + horizpadtabo;
 	m->tab_btn_w[1] = w;
 	drw_text(drw, x + horizpadtabo / 2, vertpadbar / 2, w, th - vertpadbar, 0, btn_next, 0);
 	x += w;
-        drw_setscheme(drw, scheme[SchemeBtnClose]);
+       // drw_setscheme(drw, scheme[SchemeBtnClose]);
 	w = TEXTW(btn_close) - lrpad + horizpadtabo;
 	m->tab_btn_w[2] = w;
 	drw_text(drw, x + horizpadtabo / 2, vertpadbar / 2, w, th - vertpadbar, 0, btn_close, 0);
