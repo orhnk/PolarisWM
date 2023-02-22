@@ -1,5 +1,5 @@
 #!/bin/sh
-
+libreddit &
 xrdb merge ~/.Xresources 
 feh --bg-fill /home/polaris/Documents/wallpaper.jpg &
 picom --experimental-backend & 

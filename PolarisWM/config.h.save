@@ -227,8 +227,7 @@ static const Key keys[] = {
     // kill dwm
     { MODKEY|ControlMask,               XK_q,       spawn,        SHCMD("killall bar.sh dwm") },
 
-    // kill window
-    { MODKEY,                           XK_q,       killclient,     {0} },
+    // kill win    { MODKEY,                           XK_q,       killclient,     {0} },
 
     // restart
     { MODKEY|ShiftMask,                 XK_r,       restart,           {0} },
@@ -252,8 +251,8 @@ static const Key keys[] = {
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static const Button buttons[] = {
     /* click                event mask      button          function        argument */
-   // { ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
-   // { ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
+    { ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
+    { ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
     { ClkWinTitle,          0,              Button2,        zoom,           {0} },
     { ClkStatusText,        0,              Button2,        spawn,          SHCMD("st") },
 
