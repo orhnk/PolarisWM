@@ -140,7 +140,7 @@ static const Key keys[] = {
     {MODKEY,                            XK_u,       spawn,
         SHCMD("maim --select | xclip -selection clipboard -t image/png")},
 
-    { MODKEY,                           XK_c,       spawn,            SHCMD("$HOME/.config/rofi/launchers/type-1/launcher.sh")},
+    { MODKEY,                           XK_c,       spawn,            SHCMD("/home/polaris/.config/rofi/launchers/type-1/launcher.sh")},
     { MODKEY,                           XK_Return,  spawn,            SHCMD("kitty")},
     // toggle stuff
     { MODKEY,                           XK_b,       togglebar,      {0} },
