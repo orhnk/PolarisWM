@@ -1,4 +1,5 @@
 #!/bin/sh
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 libreddit &
 xrdb merge ~/.Xresources 
 feh --bg-fill /home/polaris/Documents/wallpaper.jpg &
