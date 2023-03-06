@@ -32,16 +32,20 @@ mem() {
   printf "^c$blue^ $(free -h | awk '/^Mem/ { print $3 }' | sed s/i//g)"
 }
 
-wlan() {
-	case "$(cat /sys/class/net/wl*/operstate 2>/dev/null)" in
-	up) printf "^c$black^ ^b$blue^ 󰤨 ^d^%s" " ^c$blue^Connected" ;;
-	down) printf "^c$black^ ^b$blue^ 󰤭 ^d^%s" " ^c$blue^Disconnected" ;;
-	esac
-}
+
 
 clock() {
 	printf "^c$black^ ^b$darkblue^ 󱑆 "
 	printf "^c$black^^b$blue^ $(date '+%I:%M %p ')"
+}
+
+
+volume() {
+
+  vol_val=$(pamixer --get-volume)
+  printf "^c$blue^^b$black^ Volume:"
+  printf "^c$blue$^ $vol_val"
+
 }
 
 while true; do
@@ -49,5 +53,6 @@ while true; do
   [ $interval = 0 ] || [ $(($interval % 3600)) = 0 ] && updates=$(pkg_updates)
   interval=$((interval + 1))
 
-  sleep 1 && xsetroot -name "$updates $(cpu) $(mem) $(wlan) $(clock)"
+  sleep 1 && xsetroot -name " $(volume) $(cpu) $(mem) $(clock)"
 done
+
