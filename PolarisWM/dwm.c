@@ -658,8 +658,6 @@ void buttonpress(XEvent *e) {
 
   if (ev->x > selmon->ww - (int)TEXTW(stext))
          click = ClkStatusText;
-  else
-         click = ClkWinTitle;
   }
     	
 	if(ev->window == selmon->tabwin) {
@@ -1532,13 +1530,8 @@ void drawbar(Monitor *m) {
   w = floatbar?mw + m->gappov * 2 - sw - stw - x:mw - sw - stw - x;
   if (w > bh_n) {
     if (m->sel) {
-      drw_setscheme(drw, scheme[m == selmon ? SchemeTitle : SchemeNorm]);
-     	drw_text(drw, x, 0, w, bh, lrpad / 2 + (m->sel->icon ? m->sel->icw + ICONSPACING : 0), m->sel->name, 0);
 			if (m->sel->icon) drw_pic(drw, x + lrpad / 2, (bh - m->sel->ich) / 2, m->sel->icw, m->sel->ich, m->sel->icon);
-      if (m->sel->isfloating)
-        drw_rect(drw, x + boxs, boxs, boxw, boxw, m->sel->isfixed, 0);
-    } else {
-      drw_setscheme(drw, scheme[SchemeNorm]);
+      
       if(floatbar){
         drw_rect(drw, x, y, w - m->gappov * 2, bh_n, 1, 1);
       }else{
@@ -2461,14 +2454,9 @@ void propertynotify(XEvent *e) {
       drawtabs();
       break;
     }
-    if (ev->atom == XA_WM_NAME || ev->atom == netatom[NetWMName]) {
-      updatetitle(c);
-      if (c == c->mon->sel)
-        drawbar(c->mon);
-      drawtab(c->mon);
-    }
-
-    else if (ev->atom == netatom[NetWMIcon]) {
+    if (ev->atom == XA_WM_NAME || ev->atom == netatom[NetWMName]) 
+      updatetitle(c);    
+    if (ev->atom == netatom[NetWMIcon]) {
 			updateicon(c);
 			if (c == c->mon->sel)
 				drawbar(c->mon);
@@ -3894,3 +3882,4 @@ int main(int argc, char *argv[]) {
   XCloseDisplay(dpy);
   return EXIT_SUCCESS;
 }
+
