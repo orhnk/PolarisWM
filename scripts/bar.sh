@@ -48,11 +48,19 @@ volume() {
 
 }
 
+weather() {
+
+  weather=$(curl curl wttr.in/Plymouth?format="%l:+%t\n")
+  moon=$(curl wttr.in/Plymouth?format=%m)
+  printf "^c$blue$^ $moon $weather" 
+
+  
+}
 while true; do
 
   [ $interval = 0 ] || [ $(($interval % 3600)) = 0 ] && updates=$(pkg_updates)
   interval=$((interval + 1))
 
-  sleep 1 && xsetroot -name " $(volume) $(cpu) $(mem) $(clock)"
+  sleep 1 && xsetroot -name " $(volume) $(weather) $(cpu) $(mem) $(clock)"
 done
 
