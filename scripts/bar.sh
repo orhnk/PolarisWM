@@ -50,7 +50,7 @@ volume() {
 
 weather() {
 
-  weather=$(curl curl wttr.in/?format="%t\n")
+  weather=$(curl wttr.in/?format="%t\n")
     moon=$(curl wttr.in/?format=%m)
   printf "^c$blue$^ $moon $weather" 
 
